@@ -1,0 +1,140 @@
+SQL
+
+SQL stands for Structured Query Language
+
+SQL can execute queries against a database
+SQL can retrieve data from a database
+SQL can insert records in a database
+SQL can update records in a database
+SQL can delete records from a database
+SQL can create new databases
+SQL can create new tables in a database
+SQL can create stored procedures in a database
+SQL can create views in a database
+SQL can set permissions on tables, procedures, and views
+
+SELECT, UPDATE, DELETE, INSERT, WHERE
+
+RDBMS СУБД 
+RDBMS stands for Relational Database Management System.(Система управления БД)
+
+RDBMS is the basis for SQL, and for all modern database systems such as MS SQL Server, IBM DB2, Oracle, MySQL, and Microsoft Access.
+
+The data in RDBMS is stored in database objects called tables. A table is a collection of related data entries and it consists of columns and rows.
+
+A record, also called a row, is each individual entry that exists in a table. For example, there are 91 records in the above Customers table. A record is a horizontal entity in a table.
+
+A column is a vertical entity in a table that contains all information associated with a specific field in a table.
+
+SQL Statements:
+
+SELECT - extracts data from a database 
+SELECT column1, column2, ...
+FROM table_name;
+
+1.SELECT * FROM table_name;
+2.SELECT DISTINCT column1, column2, ...
+FROM table_name;
+3.SELECT COUNT(DISTINCT Country) FROM Customers;
+
+WHERE - It is used to extract only those records that fulfill a specified condition.
+Note: The WHERE clause is not only used in SELECT statements, it is also used in UPDATE, DELETE, etc.!
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+The AND and OR operators are used to filter records based on more than one condition:
+The AND operator displays a record if all the conditions separated by AND are TRUE.
+The OR operator displays a record if any of the conditions separated by OR is TRUE.
+The NOT operator displays a record if the condition(s) is NOT TRUE.
+
+1. SELECT * FROM Customers
+WHERE Country='Mexico';
+
+2.SELECT * FROM Customers
+WHERE CustomerID=1;
+
+3.
+SELECT * FROM Customers
+WHERE City = 'Berlin'
+AND PostalCode = 12209;
+
+4.
+SELECT * FROM Customers
+WHERE City = 'Berlin'
+OR City = 'London';
+
+The following operators can be used in the WHERE clause:
+=	Equal	
+>	Greater than	
+<	Less than	
+>=	Greater than or equal	
+<=	Less than or equal	
+<>	Not equal. Note: In some versions of SQL this operator may be written as !=	
+BETWEEN	Between a certain range	
+LIKE	Search for a pattern	
+IN	To specify multiple possible values for a column
+
+ORDER BY Keyword
+The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+The ORDER BY keyword sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword.
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC|DESC;
+
+
+UPDATE - updates data in a database
+
+1.UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+2.UPDATE Customers
+SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+WHERE CustomerID = 1;
+
+3.UPDATE Customers
+SET ContactName='Juan'
+WHERE Country='Mexico';
+
+DELETE - deletes data from a database
+1.DELETE FROM table_name WHERE condition;
+
+2.DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+
+3.Delete All Records
+It is possible to delete all rows in a table without deleting the table. This means that the table structure, attributes, and indexes will be intact:
+DELETE FROM table_name;
+
+4.The following SQL statement deletes all rows in the "Customers" table, without deleting the table:
+DELETE FROM Customers;
+
+INSERT INTO - inserts new data into a database
+1. Specify both the column names and the values to be inserted:
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+2. If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. However, make sure the order of the values is in the same order as the columns in the table. Here, the INSERT INTO syntax would be as follows:
+INSERT INTO table_name
+VALUES (value1, value2, value3, ...);
+
+
+CREATE DATABASE - creates a new database
+ALTER DATABASE - modifies a database
+CREATE TABLE - creates a new table
+ALTER TABLE - modifies a table
+DROP TABLE - deletes a table
+CREATE INDEX - creates an index (search key)
+DROP INDEX - deletes an index
+
+NULL
+We will have to use the IS NULL and IS NOT NULL operators instead.
+IS NULL Syntax
+SELECT column_names
+FROM table_name
+WHERE column_name IS NULL;
+
+IS NOT NULL Syntax
+SELECT column_names
+FROM table_name
+WHERE column_name IS NOT NULL;
